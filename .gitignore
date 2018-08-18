@@ -1,3 +1,5 @@
 .vscode
 venv
 /**/*.pyc
+logs
+app.db
