@@ -15,10 +15,13 @@ def before_request():
         db.session.commit()
         g.search_form = SearchForm()
 
-@bp.route('/', methods=['GET', 'POST'])
-@bp.route('/index', methods=['GET', 'POST'])
-@login_required
+@bp.route('/')
 def index():
+    return render_template('index.html', title='Home')
+   
+@bp.route('/posts', methods=['GET', 'POST'])
+@login_required
+def posts():
     form = PostForm()
     if form.validate_on_submit():
         post = Post(body=form.post.data, author=current_user)
@@ -33,7 +36,7 @@ def index():
         if posts.has_next else None
     prev_url = url_for('main.index', page=posts.prev_num) \
         if posts.has_prev else None
-    return render_template('index.html', title='Home', form=form,
+    return render_template('posts.html', title='Home', form=form,
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
 
@@ -48,7 +51,7 @@ def explore():
         if posts.has_next else None
     prev_url = url_for('main.explore', page=posts.prev_num) \
         if posts.has_prev else None
-    return render_template('index.html', title='Explore',
+    return render_template('posts.html', title='Explore',
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
 
