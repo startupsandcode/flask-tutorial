@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
     <table class="table table-hover">
@@ -19,6 +20,13 @@
             </td>
         </tr>
     </table>
+    {% if form %}
+    <div class="row">
+        <div class="col-md-4">
+            {{ wtf.quick_form(form) }}
+        </div>
+    </div>
+    {% endif %}
     {% for post in posts %}
         {% include '_post.html' %}
     {% endfor %}
