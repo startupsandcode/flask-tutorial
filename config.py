@@ -19,3 +19,4 @@ class Config(object):
 
     POSTS_PER_PAGE = 3
 
+    USERS_PER_PAGE = 3

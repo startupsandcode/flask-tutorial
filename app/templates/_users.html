@@ -1,0 +1,13 @@
+<table class="table table-hover">
+    <tr class="clickable-row" style="cursor: pointer" data-href="{{ url_for('main.user', username=user.username) }}">
+            <td width="70px">
+                <img src="{{ user.avatar(70) }}" />
+            </td>
+            <td>
+                Name: {{ user.username }}
+                <br>
+                About Me: <span id="user{{ user.id }}">{{ user.about_me }}</span>
+            </td>
+        </a>
+    </tr>
+</table>

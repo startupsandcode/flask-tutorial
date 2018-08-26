@@ -17,8 +17,17 @@ def before_request():
 
 @bp.route('/')
 def index():
-    return render_template('index.html', title='Home')
-   
+    page = request.args.get('page', 1, type=int)
+    users = User.query.paginate(
+        page, current_app.config['USERS_PER_PAGE'], False)
+    next_url = url_for('main.index', page=users.next_num) \
+        if users.has_next else None
+    prev_url = url_for('main.index', page=users.prev_num) \
+        if users.has_prev else None
+    return render_template('index.html', title='Explore',
+                           users=users.items, next_url=next_url,
+                           prev_url=prev_url)
+
 @bp.route('/posts', methods=['GET', 'POST'])
 @login_required
 def posts():
