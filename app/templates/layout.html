@@ -2,10 +2,15 @@
 {% block title %}
     {% if title %}{{ title }} - CareKeepr{% else %}Welcome to CareKeepr{% endif %}
 {% endblock %}
-{% block navbar %}
+{% block head %}
+    {{ super() }}
+    <link href="{{ url_for('static', filename='css/main.scss.css') }}"
+      rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" 
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+{% endblock %}
+{% block navbar %}
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
@@ -15,7 +20,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url_for('main.index') }}">CareKeepr</a>
+                <a class="navbar-brand" href="{{ url_for('main.index') }}">
+                    <img class='logo' src="{{ url_for('static',filename='logo.png') }}" alt='CareKeepr Logo' />
+                </a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">

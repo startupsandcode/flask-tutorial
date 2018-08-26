@@ -1,0 +1,12 @@
+$primary-color:#19234f;
+$secondary-color: #90be3e;
+$primary-background: #eeeff1;
+
+body{
+    background-color: $primary-background;
+    color: $primary-color;
+}
+
+.logo{
+    max-height: 25px;
+}
