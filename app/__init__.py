@@ -9,8 +9,6 @@ from flask_mail import Mail
 from flask_bootstrap import Bootstrap
 from config import Config
 
-from sassutils.wsgi import SassMiddleware
-
 db = SQLAlchemy()
 migrate = Migrate()
 login = LoginManager()
@@ -28,10 +26,6 @@ def create_app(config_class=Config):
     login.init_app(app)
     mail.init_app(app)
     bootstrap.init_app(app)
-
-    app.wsgi_app = SassMiddleware(app.wsgi_app, {
-        'microblog': ('static/sass', 'static/css', '/static/css')
-    })
 
     from app.errors import bp as errors_bp
     app.register_blueprint(errors_bp)
