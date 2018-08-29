@@ -17,14 +17,18 @@ def before_request():
 
 @bp.route('/')
 def index():
+    return render_template('index.html', title='Explore')
+
+@bp.route('/list')
+def lists():
     page = request.args.get('page', 1, type=int)
     users = User.query.paginate(
         page, current_app.config['USERS_PER_PAGE'], False)
-    next_url = url_for('main.index', page=users.next_num) \
+    next_url = url_for('main.lists', page=users.next_num) \
         if users.has_next else None
-    prev_url = url_for('main.index', page=users.prev_num) \
+    prev_url = url_for('main.lists', page=users.prev_num) \
         if users.has_prev else None
-    return render_template('index.html', title='Explore',
+    return render_template('list.html', title='Explore',
                            users=users.items, next_url=next_url,
                            prev_url=prev_url)
 

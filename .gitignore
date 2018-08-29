@@ -4,3 +4,4 @@ venv
 logs
 app.db
 static/css
+.eggs/
