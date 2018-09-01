@@ -9,6 +9,9 @@ class EditProfileForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     about_me = TextAreaField('About me',
                              validators=[Length(min=0, max=140)])
+    availability = TextAreaField('Availability', validators=[Length(min=0, max=140)])
+    location = StringField('Location', validators=[Length(min=0, max=140)])
+    skills = TextAreaField('Skills', validators=[Length(min=0, max=140)])
     submit = SubmitField('Submit')
 
     def __init__(self, original_username, *args, **kwargs):
@@ -23,7 +26,7 @@ class EditProfileForm(FlaskForm):
 
 
 class PostForm(FlaskForm):
-    post = TextAreaField('Say something', validators=[DataRequired()])
+    post = TextAreaField('Send Message', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 

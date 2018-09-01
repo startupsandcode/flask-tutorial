@@ -4,9 +4,9 @@
                 <img src="{{ user.avatar(70) }}" />
             </td>
             <td>
-                Name: {{ user.username }}
-                <br>
-                About Me: <span id="user{{ user.id }}">{{ user.about_me }}</span>
+            <div>Name: {{ user.username }}</div>
+            <div>About Me: <span id="user{{ user.id }}">{{ user.about_me }}</div>
+            <div>Location: <span id="user{{ user.id }}">{{ user.location }}</div>
             </td>
         </a>
     </tr>

@@ -20,6 +20,9 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     about_me = db.Column(db.String(140))
+    availability = db.Column(db.String(140))
+    location = db.Column(db.String(140))
+    skills = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
 
     followed = db.relationship(

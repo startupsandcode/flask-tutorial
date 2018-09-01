@@ -7,3 +7,8 @@ python setup.py build_sass
 ```
 git push heroku deploy:master
 ```
+## db changes
+```
+flask db migrate -m "Your migration note"
+flask db upgrade
+```
