@@ -13,6 +13,7 @@
             </td>
             <td>
                 <h1>User: {{ user.username }}</h1>
+                {% if user.firstName and user.lastName %}<p>{{ user.firstName }} {{ user.lastName }}</p>{% endif %}
                 {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
                 {% if user.location %}<p>{{ user.location }}</p>{% endif %}
                 {% if user.availability %}<p>{{ user.availability }}</p>{% endif %}

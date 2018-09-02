@@ -100,6 +100,9 @@ def edit_profile():
     form = EditProfileForm(current_user.username)
     if form.validate_on_submit():
         current_user.username = form.username.data
+        current_user.email = form.email.data
+        current_user.firstName = form.firstName.data
+        current_user.lastName = form.lastName.data
         current_user.about_me = form.about_me.data
         current_user.availability = form.availability.data
         current_user.location = form.location.data
@@ -109,6 +112,9 @@ def edit_profile():
         return redirect(url_for('main.edit_profile'))
     elif request.method == 'GET':
         form.username.data = current_user.username
+        form.email.data = current_user.email
+        form.firstName.data = current_user.firstName
+        form.lastName.data = current_user.lastName
         form.about_me.data = current_user.about_me
         form.availability.data = current_user.availability
         form.location.data = current_user.location
