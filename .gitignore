@@ -5,3 +5,4 @@ logs
 app.db
 static/css
 .eggs/
+app/static/img/**

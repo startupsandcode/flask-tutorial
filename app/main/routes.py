@@ -79,7 +79,7 @@ def user(username):
         post = Post(body=form.post.data, author=current_user)
         db.session.add(post)
         db.session.commit()
-        flash('Your post is now live!')
+        flash('Your message was sent!')
         return redirect(url_for('main.explore'))
 
     user = User.query.filter_by(username=username).first_or_404()
@@ -119,7 +119,7 @@ def edit_profile():
         form.availability.data = current_user.availability
         form.location.data = current_user.location
         form.skills.data = current_user.skills
-    return render_template('edit_profile.html', title='Edit Profile',
+    return render_template('edit_profile.html', title='Edit Profile',photo=current_user.pic,
                            form=form)
 
 @bp.route('/upload', methods=['GET', 'POST'])
