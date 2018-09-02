@@ -1,12 +1,14 @@
+import os
 from datetime import datetime
 from flask import render_template, flash, redirect, url_for, request, g, \
     jsonify, current_app
 from flask_login import current_user, login_required
-from app import db
+from app import db, photos
 from app.main.forms import EditProfileForm, PostForm, SearchForm
 from app.models import User, Post
 from app.main import bp
-
+from werkzeug.utils import secure_filename
+from config import basedir
 
 @bp.before_app_request
 def before_request():
@@ -114,6 +116,19 @@ def edit_profile():
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
 
+@bp.route('/upload', methods=['GET', 'POST'])
+def upload():
+    if request.method == 'POST' and 'photo' in request.files:
+        image = request.files['photo'] #myfile is name of input tag
+        filename = secure_filename(image.filename)
+        fullfile = os.path.join(basedir,'app\\static\\img\\' + current_user.username, filename)
+        if not os.path.exists(os.path.dirname(fullfile)):
+            os.makedirs(os.path.dirname(fullfile))
+        image.save(fullfile)
+        current_user.pic = '/static/img/' + current_user.username + '/' + filename
+        db.session.commit()
+        flash('Image updated.')
+    return redirect(url_for('main.edit_profile'))
 
 @bp.route('/follow/<username>')
 @login_required

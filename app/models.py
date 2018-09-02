@@ -23,6 +23,7 @@ class User(UserMixin, db.Model):
     availability = db.Column(db.String(140))
     location = db.Column(db.String(140))
     skills = db.Column(db.String(140))
+    pic = db.Column(db.String(100))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
 
     followed = db.relationship(
