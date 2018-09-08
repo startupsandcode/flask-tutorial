@@ -26,8 +26,9 @@ function uploadFile(file, s3Data, url){
     xhr.onreadystatechange = function() {
       if(xhr.readyState === 4){
         if(xhr.status === 200 || xhr.status === 204){
-          document.getElementById("preview").src = url;
-          document.getElementById("pic").value = url;
+            console.log(url);
+            document.getElementById("preview").src = url;
+            document.getElementById("pic").value = url;
         }
         else{
           alert("Could not upload file.");
