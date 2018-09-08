@@ -1,4 +1,4 @@
-import os
+import os, boto3, json
 from datetime import datetime
 from flask import render_template, flash, redirect, url_for, request, g, \
     jsonify, current_app
@@ -135,6 +135,31 @@ def upload():
         db.session.commit()
         flash('Image updated.')
     return redirect(url_for('main.edit_profile'))
+
+@bp.route('/sign_s3', methods=['GET','POST'])
+def sign_s3():
+    S3_BUCKET = 'care-dev-01'
+
+    file_name = request.args.get('file_name')
+    file_type = request.args.get('file_type')
+
+    s3 = boto3.client('s3')
+
+    presigned_post = s3.generate_presigned_post(
+    Bucket = S3_BUCKET,
+    Key = file_name,
+    Fields = {"acl": "public-read", "Content-Type": file_type},
+    Conditions = [
+        {"acl": "public-read"},
+        {"Content-Type": file_type}
+    ],
+    ExpiresIn = 3600
+    )
+
+    return json.dumps({
+    'data': presigned_post,
+    'url': 'https://%s.s3.amazonaws.com/%s' % (S3_BUCKET, file_name)
+    })
 
 @bp.route('/follow/<username>')
 @login_required

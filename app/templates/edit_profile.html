@@ -1,15 +1,13 @@
 {% extends "layout.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
-{% import 'upload.html' as imageUpload %}
-
 {% block app_content %}
     <h1>Edit Profile</h1>
     <div class="row">
         <div class="col-md-4">
             {% if photo %}
-            <img class="profile-sm" src="{{ photo }}" />
+            <img class="profile-sm" id="preview" src="{{ photo }}" />
             {% endif %}
-            {{ imageUpload }}
+            <input type=file id="photo" name=photo>
             {{ wtf.quick_form(form) }}
         </div>
     </div>

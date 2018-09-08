@@ -1,11 +1,12 @@
 from flask import request
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, TextAreaField
+from wtforms import StringField, SubmitField, TextAreaField, HiddenField
 from wtforms.validators import ValidationError, DataRequired, Length
 from app.models import User
 
 
 class EditProfileForm(FlaskForm):
+    pic = HiddenField('pic')
     username = StringField('Custom Domain', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired()])
     firstName = StringField('FirstName', validators=[DataRequired()])
