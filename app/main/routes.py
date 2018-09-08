@@ -107,6 +107,7 @@ def edit_profile():
         current_user.availability = form.availability.data
         current_user.location = form.location.data
         current_user.skills = form.skills.data
+        current_user.pic = form.pic.data
         db.session.commit()
         flash('Your changes have been saved.')
         return redirect(url_for('main.edit_profile'))
