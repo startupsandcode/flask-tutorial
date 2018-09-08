@@ -9,6 +9,12 @@ $(document).ready(function($) {
         if (!file) {
             return alert("No file selected.");
         }
+        if (file.type != "image/jpeg" && file.type != "image/png"){
+            return alert("Please upload a jpg or png file");
+        }
+        if (file.size > 2000000){
+            return alert("File must be under 2mb");
+        }
         getSignedRequest(file);
     });
 });
@@ -26,7 +32,6 @@ function uploadFile(file, s3Data, url){
     xhr.onreadystatechange = function() {
       if(xhr.readyState === 4){
         if(xhr.status === 200 || xhr.status === 204){
-            console.log(url);
             document.getElementById("preview").src = url;
             document.getElementById("pic").value = url;
         }
