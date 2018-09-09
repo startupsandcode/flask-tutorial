@@ -6,8 +6,10 @@
         <div class="col-md-4">
             {% if photo %}
             <img class="profile-sm" id="preview" src="{{ photo }}" />
+            {$ else %}
+            <img class='profile-sm' id="preview" src="{{ url_for('static', filename='img/default-image.jpg') }}">
             {% endif %}
-            <input type=file id="photo" name=photo>
+            Upload Photo: <input type=file id="photo" name=photo>
             {{ wtf.quick_form(form) }}
         </div>
     </div>
