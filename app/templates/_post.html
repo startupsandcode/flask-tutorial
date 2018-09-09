@@ -5,7 +5,7 @@
                 {% if post.author.pic != None %}
                 <img class='profile-sm' src="{{ post.author.pic }}" />
                 {% else %}
-                <img src="{{ post.author.avatar(70) }}" />
+                <img class='profile-sm' id="preview" src="{{ url_for('static', filename='img/default-image.jpg') }}" />
                 {% endif %}
             </a>
         </td>
