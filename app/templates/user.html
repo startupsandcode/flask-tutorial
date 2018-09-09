@@ -8,7 +8,7 @@
             {% if user.pic != None %}
             <img class='profile-lg' src="{{ user.pic }}" />
             {% else %}
-            <img src="{{ user.avatar(256) }}">
+            <img class='profile-lg' src="{{ url_for('static', filename='img/default-image.jpg') }}">
             {% endif %}
             </td>
             <td>

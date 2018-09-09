@@ -7,11 +7,29 @@ body {
 
 .box {
   border: solid 1px;
-  padding: 10%;
-  text-align: center; }
+  text-align: center;
+  min-height: 300px;
+  margin: 10px;
+  transition: all 0.5s; }
+  .box div.care {
+    background-color: #90be3e;
+    color: #eeeff1;
+    padding: 10px;
+    margin-top: 50%; }
+  .box:hover {
+    opacity: 0.9;
+    border: solid 4px; }
 
 .profile-sm {
   width: 70px; }
 
 .profile-lg {
   width: 150px; }
+
+.caregiver {
+  background-image: url("/static/img/caregiver01.jpg");
+  background-size: cover; }
+
+.careseeker {
+  background-image: url("/static/img/caregiver.jpg");
+  background-size: cover; }

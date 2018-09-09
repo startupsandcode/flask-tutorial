@@ -13,8 +13,20 @@ body{
 
 .box{
     border: solid 1px;
-    padding: 10%;
     text-align: center;
+    min-height: 300px;
+    margin: 10px;
+    transition: all 0.5s;
+    div.care{
+        background-color: $secondary-color;
+        color: $primary-background;
+        padding: 10px;
+        margin-top: 50%;
+    }
+    &:hover{
+        opacity: 0.9;
+        border: solid 4px;
+    }
 }
 
 .profile-sm{
@@ -23,4 +35,14 @@ body{
 
 .profile-lg{
     width: 150px;
+}
+
+.caregiver{
+    background-image: url('/static/img/caregiver01.jpg');
+    background-size: cover;
+}
+
+.careseeker{
+    background-image: url('/static/img/caregiver.jpg');
+    background-size: cover;
 }

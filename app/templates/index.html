@@ -1,18 +1,21 @@
-{% extends "layout.html" %}
-{% import 'bootstrap/wtf.html' as wtf %}
-
+{% extends "layout.html" %} 
+{% import 'bootstrap/wtf.html' as wtf %} 
 {% block app_content %}
-    <h1>Welcome to CareKeepr</h1>
-    <div class="container">
-        <div class="col-lg-3">
-            <div class="box">
-                <a href="/list">Are you seeking care?</a>
+<h1>Welcome to CareKeepr</h1>
+<div class="container">
+    <div class="col-lg-6">
+        <a href="/list">
+            <div class="box careseeker">
+                <div class='care'>I'm seeking care</div>
             </div>
-        </div>
-        <div class="col-lg-3">
-            <div class="box">
-                <a href="/auth/login">Are you a care giver?</a>
-            </div>
-        </div>
+        </a>
     </div>
+    <div class="col-lg-6">
+        <a href="/auth/login">
+            <div class="box caregiver">
+                <div class='care'>I'm a care giver</div>
+            </div>
+        </a>
+    </div>
+</div>
 {% endblock %}
