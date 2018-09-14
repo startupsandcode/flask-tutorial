@@ -46,3 +46,13 @@ body{
     background-image: url('/static/img/caregiver.jpg');
     background-size: cover;
 }
+
+.profile{
+    div{
+        padding: 3px;
+    }
+    textarea{
+        width: 50%;
+        height: 100px;
+    }
+}

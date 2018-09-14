@@ -1,16 +1,29 @@
 {% extends "layout.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
 {% block app_content %}
-    <h1>Edit Profile</h1>
-    <div class="row">
-        <div class="col-md-4">
-            {% if photo %}
+<div class="row">
+        <div class="col-md-offset-2 col-md-8 profile">
+                <h1>Edit Profile</h1>
+                {% if photo %}
             <img class="profile-sm" id="preview" src="{{ photo }}" />
             {% else %}
             <img class='profile-sm' id="preview" src="{{ url_for('static', filename='img/default-image.jpg') }}" />
             {% endif %}
             <div>Upload Photo: <input type=file id="photo" name=photo></div>
-            {{ wtf.quick_form(form) }}
+            <form action="" method="post" class="form" role="form" _lpchecked="1">
+                <div class="description">
+                    Choose a name for your website or business. The name you choose will be your user name as well. It will show up as www.CareKeepr.com/your name. This will be your link to share your new site with friends, family, clients, social organizations or social media. Please choose this name wisely as this will be a public URL. If privacy is an issue, do not use full name.
+                </div>
+                <div>{{ form.username.label }}</div><div>http://www.carekeepr.com/user/{{ form.username(class="form_control") }}</div>
+                <div>{{ form.email.label }}</div><div>{{ form.email(class="form_control") }}</div>
+                <div>{{ form.firstName.label }}</div><div>{{ form.firstName(class="form_control") }}</div>
+                <div>{{ form.lastName.label }}</div><div>{{ form.lastName(class="form_control") }}</div>
+                <div>{{ form.about_me.label }}</div><div>{{ form.about_me(class="form_control") }}</div>
+                <div>{{ form.availability.label }}</div><div>{{ form.availability(class="form_control") }}</div>
+                <div>{{ form.location.label }}</div><div>{{ form.location(class="form_control") }}</div>
+                <div>{{ form.skills.label }}</div><div>{{ form.skills(class="form_control") }}</div>
+                <div> {{ form.submit(class="btn btn-default") }}</div>
+            </form>
         </div>
     </div>
 {% endblock %}

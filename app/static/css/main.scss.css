@@ -33,3 +33,10 @@ body {
 .careseeker {
   background-image: url("/static/img/caregiver.jpg");
   background-size: cover; }
+
+.profile div {
+  padding: 3px; }
+
+.profile textarea {
+  width: 50%;
+  height: 100px; }
