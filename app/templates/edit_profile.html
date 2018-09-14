@@ -11,6 +11,7 @@
             {% endif %}
             <div>Upload Photo: <input type=file id="photo" name=photo></div>
             <form action="" method="post" class="form" role="form" _lpchecked="1">
+                {{ form.csrf_token }}
                 <div class="description">
                     Choose a name for your website or business. The name you choose will be your user name as well. It will show up as www.CareKeepr.com/your name. This will be your link to share your new site with friends, family, clients, social organizations or social media. Please choose this name wisely as this will be a public URL. If privacy is an issue, do not use full name.
                 </div>

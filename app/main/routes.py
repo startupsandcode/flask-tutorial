@@ -108,8 +108,11 @@ def edit_profile():
         current_user.location = form.location.data
         current_user.skills = form.skills.data
         current_user.pic = form.pic.data
-        db.session.commit()
-        flash('Your changes have been saved.')
+        try:
+            db.session.commit()
+            flash('Your changes have been saved.')
+        except:
+            flash('Your username is taken.')
         return redirect(url_for('main.edit_profile'))
     elif request.method == 'GET':
         form.username.data = current_user.username
@@ -120,6 +123,13 @@ def edit_profile():
         form.availability.data = current_user.availability
         form.location.data = current_user.location
         form.skills.data = current_user.skills
+    else:
+        for field, errors in form.errors.items():
+            for error in errors:
+                flash(u"Error in the %s field - %s" % (
+                    getattr(form, field).label.text,
+                    error
+                ))
     return render_template('edit_profile.html', title='Edit Profile',photo=current_user.pic,
                            form=form)
 
