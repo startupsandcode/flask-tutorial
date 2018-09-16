@@ -9,6 +9,7 @@ from flask_mail import Mail
 from flask_bootstrap import Bootstrap
 from config import Config
 from flask_uploads import UploadSet, configure_uploads, IMAGES
+from flask_scss import Scss
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -22,7 +23,7 @@ photos = UploadSet('photos', IMAGES)
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
-
+    Scss(app,static_dir='app/static', asset_dir='app/assets')
     db.init_app(app)
     migrate.init_app(app, db)
     login.init_app(app)
