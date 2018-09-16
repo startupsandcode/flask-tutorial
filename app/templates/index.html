@@ -4,14 +4,14 @@
 <h1>Welcome to CareKeepr</h1>
 <div class="container">
     <div class="col-lg-6">
-        <a href="/list">
+        <a href="{{ url_for('main.lists') }}">
             <div class="box careseeker">
                 <div class='care'>I'm seeking care</div>
             </div>
         </a>
     </div>
     <div class="col-lg-6">
-        <a href="/auth/login">
+        <a href="{{ url_for('auth.login') }}">
             <div class="box caregiver">
                 <div class='care'>I'm a care giver</div>
             </div>
