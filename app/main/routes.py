@@ -4,8 +4,8 @@ from flask import render_template, flash, redirect, url_for, request, g, \
     jsonify, current_app
 from flask_login import current_user, login_required
 from app import db, photos
-from app.main.forms import EditProfileForm, PostForm, SearchForm
-from app.models import User, Post
+from app.main.forms import EditProfileForm, PostForm, SearchForm, CareRequestForm
+from app.models import User, Post, CareRequest
 from app.main import bp
 from werkzeug.utils import secure_filename
 from config import basedir
@@ -93,6 +93,29 @@ def user(username):
     return render_template('user.html', user=user, form=form, posts=posts.items,
                            next_url=next_url, prev_url=prev_url)
 
+@bp.route('/request_care', methods=['GET', 'POST'])
+def request_care():
+    form = CareRequestForm()
+    if form.validate_on_submit():
+        care_request = CareRequest()
+        care_request.caretype = form.careType.data
+        care_request.location = form.location.data
+        care_request.careFrequency = form.careFrequency.data
+        care_request.needs = form.needs.data
+        try:
+            db.session.commit()
+            flash('Your request has been saved.')
+            return redirect(url_for('main.lists'))
+        except:
+            return redirect(url_for('main.lists'))
+    elif request.method == 'POST':
+        for field, errors in form.errors.items():
+            for error in errors:
+                flash(u"Error in the %s field - %s" % (
+                    getattr(form, field).label.text,
+                    error
+                ))
+    return render_template('request_care.html', title='Care Request',form=form)
 
 @bp.route('/edit_profile', methods=['GET', 'POST'])
 @login_required

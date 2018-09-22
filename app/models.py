@@ -90,7 +90,18 @@ class User(UserMixin, db.Model):
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
-    
+
+class CareRequest(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    careType = db.Column(db.String(20))
+    location = db.Column(db.String(100))
+    careFrequency = db.Column(db.String(20))
+    needs = db.Column(db.String(200))
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+
+    def __repr__(self):
+        return '<CareRequest {}>'.format(self.body)
+
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(140))

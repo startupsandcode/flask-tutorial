@@ -5,20 +5,27 @@ body {
   .logo {
     max-height: 25px; }
 
-    .box {
-      border: solid 1px;
-      text-align: center;
-      min-height: 300px;
-      margin: 10px;
-      transition: all 0.5s; }
-      .box div.care {
-        background-color: #90be3e;
-        color: #eeeff1;
-        padding: 10px;
-        margin-top: 50%; }
-        .box:hover {
-          opacity: 0.9;
-          border: solid 4px; }
+    .title {
+      text-align: center; }
+
+      a {
+        text-decoration: none !important; }
+
+        .box {
+          border: solid 1px;
+          text-align: center;
+          min-height: 300px;
+          margin: 10px;
+          transition: all 0.5s; }
+          .box div.care {
+            background-color: #90be3e;
+            color: #eeeff1;
+            padding: 10px;
+            margin-top: 50%;
+            font-size: 20px; }
+            .box:hover {
+              opacity: 0.9;
+              border: solid 4px; }
 
 .profile-sm {
   width: 70px; }

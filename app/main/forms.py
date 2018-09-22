@@ -1,6 +1,6 @@
 from flask import request
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, TextAreaField, HiddenField
+from wtforms import StringField, SubmitField, TextAreaField, HiddenField, SelectField
 from wtforms.validators import ValidationError, DataRequired, Length
 from app.models import User
 
@@ -28,6 +28,18 @@ class EditProfileForm(FlaskForm):
             if user is not None:
                 raise ValidationError('Please use a different username.')
 
+class CareRequestForm(FlaskForm):
+    careType = SelectField(
+        'What type of care do you need?',
+        choices=[('elderly', 'Elderly Care'), ('child', 'Child Care'), ('pet', 'Pet Care')]
+    )
+    location = StringField('Location', validators=[DataRequired()])
+    careFrequency = SelectField(
+        'When do you need care?',
+        choices=[('rare', 'Occasional back-up care'), ('ft', 'Full-Time'), ('pt', 'Part Time')]
+    )
+    needs = TextAreaField('Describe your needs', validators=[Length(min=0, max=200)])
+    submit = SubmitField('Submit')
 
 class PostForm(FlaskForm):
     post = TextAreaField('Send Message', validators=[DataRequired()])
