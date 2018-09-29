@@ -11,21 +11,32 @@ body {
       a {
         text-decoration: none !important; }
 
-        .box {
-          border: solid 1px;
-          text-align: center;
-          min-height: 300px;
-          margin: 10px;
-          transition: all 0.5s; }
-          .box div.care {
-            background-color: #90be3e;
-            color: #eeeff1;
-            padding: 10px;
-            margin-top: 50%;
-            font-size: 20px; }
-            .box:hover {
-              opacity: 0.9;
-              border: solid 4px; }
+        .navbar-default .navbar-nav {
+          margin: 10px; }
+          .navbar-default .navbar-nav li a {
+            width: 60px;
+            padding: 5px;
+            text-align: center; }
+            .navbar-default .navbar-nav li a:hover {
+              color: #fff;
+              background-color: #7da437;
+              border-radius: 40px; }
+
+.box {
+  border: solid 1px;
+  text-align: center;
+  min-height: 300px;
+  margin: 10px;
+  transition: all 0.5s; }
+  .box div.care {
+    background-color: #90be3e;
+    color: #eeeff1;
+    padding: 10px;
+    margin-top: 50%;
+    font-size: 20px; }
+    .box:hover {
+      opacity: 0.9;
+      border: solid 4px; }
 
 .profile-sm {
   width: 70px; }
