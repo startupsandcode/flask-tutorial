@@ -19,7 +19,8 @@ def before_request():
 
 @bp.route('/')
 def index():
-    return render_template('index.html', title='Explore')
+    return redirect(url_for('auth.login'))
+    #return render_template('index.html', title='Explore')
 
 @bp.route('/list')
 def lists():
