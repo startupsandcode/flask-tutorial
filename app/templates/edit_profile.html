@@ -12,10 +12,11 @@
             <div>Upload Photo: <input type=file id="photo" name=photo></div>
             <form action="" method="post" class="form" role="form" _lpchecked="1">
                 {{ form.csrf_token }}
+                {{ form.pic }}
                 <div class="description">
                     Choose a name for your website or business. The name you choose will be your user name as well. It will show up as www.CareKeepr.com/your name. This will be your link to share your new site with friends, family, clients, social organizations or social media. Please choose this name wisely as this will be a public URL. If privacy is an issue, do not use full name.
                 </div>
-                <div>{{ form.username.label }}</div><div>http://www.carekeepr.com/user/{{ form.username(class="form_control") }}</div>
+                <div>{{ form.username.label }}</div><div>http://www.carekeepr.com/{{ form.username(class="form_control") }}</div>
                 <div>{{ form.email.label }}</div><div>{{ form.email(class="form_control") }}</div>
                 <div>{{ form.firstName.label }}</div><div>{{ form.firstName(class="form_control") }}</div>
                 <div>{{ form.lastName.label }}</div><div>{{ form.lastName(class="form_control") }}</div>
