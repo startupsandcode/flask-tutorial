@@ -54,6 +54,42 @@ body {
 
         .profile div {
           padding: 3px; }
-          .profile textarea {
-            width: 50%;
-            height: 100px; }
+          .profile h3 {
+            background-color: #19234f;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            color: #fff; }
+            .profile h4 {
+              font-weight: bold;
+              color: #19234f;
+              font-size: 1.5em;
+              grid-column: 1 / 2; }
+              .profile .form-group {
+                display: grid;
+                grid-template-columns: 200px 1fr;
+                border: solid 1px #90be3e; }
+                .profile .description {
+                  grid-column: 2 / 3; }
+                  .profile textarea {
+                    width: 100%;
+                    height: 100px; }
+                    .profile .custom-file-upload {
+                      border: 1px solid #ccc;
+                      display: inline-block;
+                      padding: 6px 12px;
+                      cursor: pointer;
+                      background-color: #7da437;
+                      color: #fff; }
+                      .profile .custom-file-upload:hover {
+                        background-color: #19234f; }
+        .profile input[type=file] {
+          display: none; }
+          .profile #submit {
+            float: right;
+            width: 30%;
+            background-color: #19234f;
+            color: #fff;
+            margin-bottom: 100px; }
+            .profile #submit:hover {
+              background-color: #90be3e; }

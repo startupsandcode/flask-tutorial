@@ -2,30 +2,84 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 {% block app_content %}
 <div class="row">
-        <div class="col-md-offset-2 col-md-8 profile">
-                <h1>Edit Profile</h1>
-                {% if photo %}
-            <img class="profile-sm" id="preview" src="{{ photo }}" />
-            {% else %}
-            <img class='profile-sm' id="preview" src="{{ url_for('static', filename='img/default-image.jpg') }}" />
-            {% endif %}
-            <div>Upload Photo: <input type=file id="photo" name=photo></div>
-            <form action="" method="post" class="form" role="form" _lpchecked="1">
-                {{ form.csrf_token }}
-                {{ form.pic }}
-                <div class="description">
-                    Choose a name for your website or business. The name you choose will be your user name as well. It will show up as www.CareKeepr.com/your name. This will be your link to share your new site with friends, family, clients, social organizations or social media. Please choose this name wisely as this will be a public URL. If privacy is an issue, do not use full name.
-                </div>
-                <div>{{ form.username.label }}</div><div>http://www.carekeepr.com/{{ form.username(class="form_control") }}</div>
-                <div>{{ form.email.label }}</div><div>{{ form.email(class="form_control") }}</div>
-                <div>{{ form.firstName.label }}</div><div>{{ form.firstName(class="form_control") }}</div>
-                <div>{{ form.lastName.label }}</div><div>{{ form.lastName(class="form_control") }}</div>
-                <div>{{ form.about_me.label }}</div><div>{{ form.about_me(class="form_control") }}</div>
-                <div>{{ form.availability.label }}</div><div>{{ form.availability(class="form_control") }}</div>
-                <div>{{ form.location.label }}</div><div>{{ form.location(class="form_control") }}</div>
-                <div>{{ form.skills.label }}</div><div>{{ form.skills(class="form_control") }}</div>
-                <div> {{ form.submit(class="btn btn-default") }}</div>
-            </form>
+    <div class="col-md-offset-2 col-md-8 profile">
+        <h1>Let's edit your profile</h1>
+        <h3>A little about you</h3>
+        <h4>Photo</h4>
+        <p class="description">
+            Here you can upload a photo so people can recognize you. It improves
+            requests a lot. Don't you like to see who you are working with?
+        </p>
+        {% if photo %}
+        <img class="profile-sm" id="preview" src="{{ photo }}" />
+        {% else %}
+        <img class='profile-sm' id="preview" src="{{ url_for('static', filename='img/default-image.jpg') }}" />
+        {% endif %}
+        <div>
+            <label for="photo" class="custom-file-upload">Upload Photo</label>
+            <input type=file id="photo" name=photo>
         </div>
+        <form action="" method="post" class="form" role="form" _lpchecked="1">
+            {{ form.csrf_token }}
+            {{ form.pic }}
+            <div class="form-group">
+                <h4>Your link for others</h4>
+                <div>https://caregive-dev.herokuapp.com/{{ form.username(class="form_control") }}</div>
+                <p class="description">
+                    Choose a name for your website or business. The name you choose will be your user name as well. It
+                    will show up as www.CareKeepr.com/your name. This will be your link to share your new site with
+                    friends,
+                    family, clients, social organizations or social media. Please choose this name wisely as this will
+                    be a public URL. If privacy is an issue, do not use full name.
+                </p>
+            </div>
+            <div class="form-group">
+                <h4>Your email address</h4>
+                <div>{{ form.email(class="form_control") }}</div>
+                <p class="description">
+                    This is where we will send private messages and notifications from people looking for you.
+                    Don't worry this address will not be seen by anyone publicly. It is how we can reach out to you
+                    when your new clients are looking for you. It will be up to you to share it with them.
+                </p>
+            </div>
+            <div class="form-group">
+                <h4>Your First and Last Name</h4>
+                <div>{{ form.firstName(class="form_control") }} {{ form.lastName(class="form_control") }}</div>
+                <p class="description">
+                    This is your first and last name. We will only display your first name to the public.
+                </p>
+            </div>
+            <div class="form-group">
+                <h4>{{ form.about_me.label }}</h4>
+                <div>{{ form.about_me(class="form_control") }}</div>
+                <p class="description">
+                    This is where you will tell people about who you are and why they should hire you.
+                </p>
+            </div>
+            <h3>A little about you location and skills</h3>
+            <div class="form-group">
+                <h4>{{ form.availability.label }}</h4>
+                <div>{{ form.availability(class="form_control") }}</div>
+                <p class="description">
+                    This is your availability for care. Example: M-F 10-4pm, No Weekends, etc..
+                </p>
+            </div>
+            <div class="form-group">
+                <h4>{{ form.location.label }}</h4>
+                <div>{{ form.location(class="form_control") }}</div>
+                <p class="description">
+                    This is your general location so we can match you with people in your area.
+                </p>
+            </div>
+            <div class="form-group">
+                <h4>{{ form.skills.label }}</h4>
+                <div>{{ form.skills(class="form_control") }}</div>
+                <p class="description">
+                    This is a list of your skills and certifications.
+                </p>
+            </div>
+            <div> {{ form.submit(class="btn btn-default",id='submit',value="Save") }}</div>
+        </form>
     </div>
+</div>
 {% endblock %}
